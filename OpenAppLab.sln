@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.13.35913.81 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Template.UI", "OpenAppLab.Template.UI\OpenAppLab.Template.UI\OpenAppLab.Template.UI.csproj", "{10FBB3E3-9A1A-43E6-AF94-CD082B0867E9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Template.UI", "OpenAppLab\Template\OpenAppLab.Template.UI\OpenAppLab.Template.UI.csproj", "{10FBB3E3-9A1A-43E6-AF94-CD082B0867E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Template.UI.Shared", "OpenAppLab.Template.UI\OpenAppLab.Template.UI.Shared\OpenAppLab.Template.UI.Shared.csproj", "{8DD5A32E-6820-4CB0-878F-0127E40D9D7D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Template.UI.Shared", "OpenAppLab\Template\OpenAppLab.Template.UI.Shared\OpenAppLab.Template.UI.Shared.csproj", "{8DD5A32E-6820-4CB0-878F-0127E40D9D7D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Template.UI.Web", "OpenAppLab.Template.UI\OpenAppLab.Template.UI.Web\OpenAppLab.Template.UI.Web.csproj", "{991CDD7D-413C-43E3-A287-3B7C7F87B362}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Template.UI.Web", "OpenAppLab\Template\OpenAppLab.Template.UI.Web\OpenAppLab.Template.UI.Web.csproj", "{991CDD7D-413C-43E3-A287-3B7C7F87B362}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Template.UI.Web.Client", "OpenAppLab.Template.UI\OpenAppLab.Template.UI.Web.Client\OpenAppLab.Template.UI.Web.Client.csproj", "{C9EA4997-133E-411E-9A2B-024FDEBF2AB1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Template.UI.Web.Client", "OpenAppLab\Template\OpenAppLab.Template.UI.Web.Client\OpenAppLab.Template.UI.Web.Client.csproj", "{C9EA4997-133E-411E-9A2B-024FDEBF2AB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
