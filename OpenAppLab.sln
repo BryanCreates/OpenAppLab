@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35913.81 d17.13
+VisualStudioVersion = 17.13.35913.81
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Template.UI", "OpenAppLab\Template\OpenAppLab.Template.UI\OpenAppLab.Template.UI.csproj", "{10FBB3E3-9A1A-43E6-AF94-CD082B0867E9}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Template.UI.Web", "OpenAppLab\Template\OpenAppLab.Template.UI.Web\OpenAppLab.Template.UI.Web.csproj", "{991CDD7D-413C-43E3-A287-3B7C7F87B362}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Template.UI.Web.Client", "OpenAppLab\Template\OpenAppLab.Template.UI.Web.Client\OpenAppLab.Template.UI.Web.Client.csproj", "{C9EA4997-133E-411E-9A2B-024FDEBF2AB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Template.Server", "OpenAppLab\Template\OpenAppLab.Template.Server\OpenAppLab.Template.Server.csproj", "{113A544C-6756-4615-930F-6A9A538A6136}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Core.Server", "OpenAppLab\Core\OpenAppLab.Core.Server\OpenAppLab.Core.Server.csproj", "{B71F9D81-E0C1-4B1C-BF04-994C8A827B5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{C9EA4997-133E-411E-9A2B-024FDEBF2AB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C9EA4997-133E-411E-9A2B-024FDEBF2AB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C9EA4997-133E-411E-9A2B-024FDEBF2AB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{113A544C-6756-4615-930F-6A9A538A6136}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{113A544C-6756-4615-930F-6A9A538A6136}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{113A544C-6756-4615-930F-6A9A538A6136}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{113A544C-6756-4615-930F-6A9A538A6136}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B71F9D81-E0C1-4B1C-BF04-994C8A827B5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B71F9D81-E0C1-4B1C-BF04-994C8A827B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B71F9D81-E0C1-4B1C-BF04-994C8A827B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B71F9D81-E0C1-4B1C-BF04-994C8A827B5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
