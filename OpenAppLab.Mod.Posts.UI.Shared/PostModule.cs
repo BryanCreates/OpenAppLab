@@ -5,7 +5,7 @@ public static class PostsModule
 {
     static PostsModule()
     {
-        //ModuleRegistry.RegisterAssembly(typeof(Component1).Assembly);
+        ModuleRegistry.RegisterAssembly(typeof(Component1).Assembly);
     }
 
     // Optional: Call this from app startup instead of relying on static constructor

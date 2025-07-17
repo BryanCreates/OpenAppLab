@@ -13,4 +13,6 @@ builder.Services.AddHttpClient<GraphQLHttpClientService>(client =>
     client.BaseAddress = new Uri("https://localhost:7105/graphql");
 });
 
+
+OpenAppLab.Mod.Posts.UI.Shared.PostsModule.Register();
 await builder.Build().RunAsync();

@@ -21,6 +21,8 @@ builder.Services.AddSingleton<IFormFactor, FormFactor>();
 //    client.BaseAddress = new Uri("https://localhost:7105/graphql");
 //});
 
+OpenAppLab.Mod.Posts.UI.Shared.PostsModule.Register();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -40,23 +42,19 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAntiforgery();
 
-//OpenAppLab.Mod.Posts.UI.Shared.PostsModule.Register();
-
-var additionalAssemblies = new[]
+var assemblies = new[]
 {
-    typeof(OpenAppLab.Mod.Posts.UI.Shared._Imports).Assembly,
     typeof(OpenAppLab.Template.UI.Shared._Imports).Assembly,
     typeof(OpenAppLab.Template.UI.Web.Client._Imports).Assembly
 };
 
-//var webAssemblyRenderMode = new InteractiveWebAssemblyRenderMode
-//{
-//    AdditionalAssemblies = { additionalAssemblies }
-//};
+var additionalAssemblies = ModuleRegistry.GetAssemblies();
+
+var allAssemblies = assemblies.Concat(additionalAssemblies).ToArray();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
-    .AddAdditionalAssemblies(additionalAssemblies);
+    .AddAdditionalAssemblies(allAssemblies);
 
 app.Run();

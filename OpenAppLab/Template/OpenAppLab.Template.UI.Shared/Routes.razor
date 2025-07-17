@@ -1,15 +1,8 @@
 ﻿@using System.Reflection
 @using OpenAppLab.Core.UI.Shared
 
-
-        @* AdditionalAssemblies="additionalAssemblies" *@
-        @* AdditionalAssemblies="new[]{typeof(OpenAppLab.Mod.Posts.UI.Shared._Imports).Assembly}" *@
 <Router AppAssembly="typeof(Layout.MainLayout).Assembly"
-        AdditionalAssemblies="new[] {
-            typeof(OpenAppLab.Mod.Posts.UI.Shared._Imports).Assembly,
-            typeof(OpenAppLab.Template.UI.Shared._Imports).Assembly //,
-            //typeof(OpenAppLab.Template.UI.Web.Client._Imports).Assembly
-        }">
+        AdditionalAssemblies="additionalAssemblies">
     <Found Context="routeData">
         <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)" />
         <FocusOnNavigate RouteData="routeData" Selector="h1" />
@@ -18,12 +11,12 @@
 
 @code {
 
-    // public static Assembly[] additionalAssemblies { get; set; }
+    public static Assembly[] additionalAssemblies { get; set; }
 
-    // protected override void OnInitialized()
-    // {
-    //     additionalAssemblies = ModuleRegistry.GetAssemblies();
+    protected override void OnInitialized()
+    {
+        additionalAssemblies = ModuleRegistry.GetAssemblies();
 
-    //     base.OnInitialized();
-    // }
+        base.OnInitialized();
+    }
 }
