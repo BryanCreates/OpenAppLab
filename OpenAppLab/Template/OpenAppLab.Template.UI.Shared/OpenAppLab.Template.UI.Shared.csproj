@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Razor">
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -11,7 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.0" />
+    <ProjectReference Include="..\..\..\OpenAppLab.Mod.Posts.UI.Shared\OpenAppLab.Mod.Posts.UI.Shared.csproj" />
+    <ProjectReference Include="..\..\Core\OpenAppLab.Core.UI.Shared\OpenAppLab.Core.UI.Shared.csproj" />
   </ItemGroup>
 
 </Project>

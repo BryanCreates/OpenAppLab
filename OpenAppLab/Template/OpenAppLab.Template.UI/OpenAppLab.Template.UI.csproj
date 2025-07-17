@@ -67,7 +67,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OpenAppLab.Template.UI.Shared\OpenAppLab.Template.UI.Shared.csproj" />
+    <ProjectReference Include="..\..\Core\OpenAppLab.Core.UI.Shared\OpenAppLab.Core.UI.Shared.csproj" />
   </ItemGroup>
 
 </Project>

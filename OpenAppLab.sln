@@ -15,6 +15,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Template.Server"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Core.Server", "OpenAppLab\Core\OpenAppLab.Core.Server\OpenAppLab.Core.Server.csproj", "{B71F9D81-E0C1-4B1C-BF04-994C8A827B5D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Mod.Posts.Server", "OpenAppLab\Mod\Posts\OpenAppLab.Mod.Posts.Server\OpenAppLab.Mod.Posts.Server.csproj", "{0D33E738-A87F-461B-A420-44B0A76736FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Core.Mod.Server", "OpenAppLab\Core\Mod\OpenAppLab.Core.Mod.Server\OpenAppLab.Core.Mod.Server.csproj", "{A3BF9302-7277-4B19-9BA9-80022A8E2591}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Core.UI", "OpenAppLab\Core\OpenAppLab.Core.UI\OpenAppLab.Core.UI.csproj", "{DADAE130-784E-4E71-BB8A-0E6091945013}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Core.UI.Shared", "OpenAppLab\Core\OpenAppLab.Core.UI.Shared\OpenAppLab.Core.UI.Shared.csproj", "{762B4AD8-A0CB-459A-8640-3A6D7D6130FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Mod.Posts.UI.Shared", "OpenAppLab.Mod.Posts.UI.Shared\OpenAppLab.Mod.Posts.UI.Shared.csproj", "{F0EAD8A4-9BF1-4201-B787-6C637571A688}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +55,26 @@ Global
 		{B71F9D81-E0C1-4B1C-BF04-994C8A827B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B71F9D81-E0C1-4B1C-BF04-994C8A827B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B71F9D81-E0C1-4B1C-BF04-994C8A827B5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D33E738-A87F-461B-A420-44B0A76736FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D33E738-A87F-461B-A420-44B0A76736FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D33E738-A87F-461B-A420-44B0A76736FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D33E738-A87F-461B-A420-44B0A76736FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3BF9302-7277-4B19-9BA9-80022A8E2591}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3BF9302-7277-4B19-9BA9-80022A8E2591}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3BF9302-7277-4B19-9BA9-80022A8E2591}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3BF9302-7277-4B19-9BA9-80022A8E2591}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DADAE130-784E-4E71-BB8A-0E6091945013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DADAE130-784E-4E71-BB8A-0E6091945013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DADAE130-784E-4E71-BB8A-0E6091945013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DADAE130-784E-4E71-BB8A-0E6091945013}.Release|Any CPU.Build.0 = Release|Any CPU
+		{762B4AD8-A0CB-459A-8640-3A6D7D6130FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{762B4AD8-A0CB-459A-8640-3A6D7D6130FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{762B4AD8-A0CB-459A-8640-3A6D7D6130FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{762B4AD8-A0CB-459A-8640-3A6D7D6130FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0EAD8A4-9BF1-4201-B787-6C637571A688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0EAD8A4-9BF1-4201-B787-6C637571A688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0EAD8A4-9BF1-4201-B787-6C637571A688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0EAD8A4-9BF1-4201-B787-6C637571A688}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

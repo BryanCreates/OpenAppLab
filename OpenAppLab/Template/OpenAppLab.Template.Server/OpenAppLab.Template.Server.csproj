@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\OpenAppLab.Core.Server\OpenAppLab.Core.Server.csproj" />
+    <ProjectReference Include="..\..\Mod\Posts\OpenAppLab.Mod.Posts.Server\OpenAppLab.Mod.Posts.Server.csproj" />
   </ItemGroup>
 
 </Project>

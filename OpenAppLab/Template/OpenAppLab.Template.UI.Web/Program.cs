@@ -1,6 +1,10 @@
+using OpenAppLab.Core.UI.Shared;
+using OpenAppLab.Core.UI.Shared.GraphQL;
 using OpenAppLab.Template.UI.Shared.Services;
 using OpenAppLab.Template.UI.Web.Components;
 using OpenAppLab.Template.UI.Web.Services;
+using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.AspNetCore.Components.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +15,11 @@ builder.Services.AddRazorComponents()
 
 // Add device-specific services used by the OpenAppLab.Template.UI.Shared project
 builder.Services.AddSingleton<IFormFactor, FormFactor>();
+
+//builder.Services.AddHttpClient<GraphQLHttpClientService>(client =>
+//{
+//    client.BaseAddress = new Uri("https://localhost:7105/graphql");
+//});
 
 var app = builder.Build();
 
@@ -31,11 +40,23 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAntiforgery();
 
+//OpenAppLab.Mod.Posts.UI.Shared.PostsModule.Register();
+
+var additionalAssemblies = new[]
+{
+    typeof(OpenAppLab.Mod.Posts.UI.Shared._Imports).Assembly,
+    typeof(OpenAppLab.Template.UI.Shared._Imports).Assembly,
+    typeof(OpenAppLab.Template.UI.Web.Client._Imports).Assembly
+};
+
+//var webAssemblyRenderMode = new InteractiveWebAssemblyRenderMode
+//{
+//    AdditionalAssemblies = { additionalAssemblies }
+//};
+
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
-    .AddAdditionalAssemblies(
-        typeof(OpenAppLab.Template.UI.Shared._Imports).Assembly,
-        typeof(OpenAppLab.Template.UI.Web.Client._Imports).Assembly);
+    .AddAdditionalAssemblies(additionalAssemblies);
 
 app.Run();
