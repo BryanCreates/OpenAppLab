@@ -1,22 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenAppLab.Core.UI.Shared;
 public static class ModuleRegistry
 {
-    private static readonly HashSet<Assembly> _assemblies = new();
+    private static readonly List<Assembly> _moduleAssemblies = new();
 
-    public static void RegisterAssembly(Assembly assembly)
+    public static void AutoRegister(IServiceCollection services)
     {
-        _assemblies.Add(assembly);
+        var loadedAssemblies = AppDomain.CurrentDomain.GetAssemblies()
+            .Where(a => !a.IsDynamic && !string.IsNullOrWhiteSpace(a.Location));
+
+        foreach (var assembly in loadedAssemblies)
+        {
+            if (RegisterAssembly(services, assembly))
+            {
+                _moduleAssemblies.Add(assembly);
+            }
+        }
+    }
+
+    // Returns true if at least one IModule was registered
+    public static bool RegisterAssembly(IServiceCollection services, Assembly assembly)
+    {
+        var moduleTypes = assembly
+            .GetTypes()
+            .Where(t => typeof(IModule).IsAssignableFrom(t) && !t.IsAbstract && !t.IsInterface);
+
+        var anyRegistered = false;
+
+        foreach (var type in moduleTypes)
+        {
+            var module = (IModule?)Activator.CreateInstance(type);
+            if (module != null)
+            {
+                module.Register(services);
+                anyRegistered = true;
+            }
+        }
+
+        return anyRegistered;
     }
 
     public static Assembly[] GetAssemblies()
     {
-        return _assemblies.ToArray();
+        return _moduleAssemblies.ToArray();
     }
 }

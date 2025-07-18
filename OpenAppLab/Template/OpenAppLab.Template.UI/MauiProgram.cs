@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using OpenAppLab.Core.UI.Shared;
 using OpenAppLab.Core.UI.Shared.GraphQL;
 using OpenAppLab.Template.UI.Services;
 using OpenAppLab.Template.UI.Shared.Services;
@@ -33,6 +34,8 @@ namespace OpenAppLab.Template.UI
             {
                 client.BaseAddress = new Uri(BaseAddress);
             });
+
+            //ModuleRegistry.AutoRegister();
 
             return builder.Build();
         }

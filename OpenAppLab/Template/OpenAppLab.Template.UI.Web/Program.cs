@@ -21,8 +21,8 @@ builder.Services.AddSingleton<IFormFactor, FormFactor>();
 //    client.BaseAddress = new Uri("https://localhost:7105/graphql");
 //});
 
-OpenAppLab.Mod.Posts.UI.Shared.PostsModule.Register();
-
+ModuleRegistry.AutoRegister(builder.Services);
+//OpenAppLab.Mod.Posts.UI.Shared.PostsModule.Register();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

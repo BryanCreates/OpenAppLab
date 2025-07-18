@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Core.UI", "OpenA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Core.UI.Shared", "OpenAppLab\Core\OpenAppLab.Core.UI.Shared\OpenAppLab.Core.UI.Shared.csproj", "{762B4AD8-A0CB-459A-8640-3A6D7D6130FD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Mod.Posts.UI.Shared", "OpenAppLab.Mod.Posts.UI.Shared\OpenAppLab.Mod.Posts.UI.Shared.csproj", "{F0EAD8A4-9BF1-4201-B787-6C637571A688}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAppLab.Mod.Posts.UI.Shared", "OpenAppLab\Mod\Posts\OpenAppLab.Mod.Posts.UI.Shared\OpenAppLab.Mod.Posts.UI.Shared.csproj", "{F0EAD8A4-9BF1-4201-B787-6C637571A688}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
