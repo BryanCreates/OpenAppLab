@@ -1,0 +1,50 @@
+﻿@page "/posts"
+@using OpenAppLab.Core.UI.Shared.GraphQL
+@inject GraphQLHttpClientService GraphQLService
+
+<h3>Posts</h3>
+
+@if (posts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else if (!posts.Any())
+{
+    <p>No posts found.</p>
+}
+else
+{
+    <ul>
+        @foreach (var post in posts)
+        {
+            <li>
+                <strong>@post.Title</strong>
+                <pre>@post.Content</pre>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+    private List<Post>? posts;
+
+    protected override async Task OnInitializedAsync()
+    {
+        posts = await GraphQLService.ExecuteQueryAsync<Post>(@"
+        query {
+            posts {
+                id
+                title
+                content
+            }
+        }");
+        await base.OnInitializedAsync();
+    }
+
+    public class Post
+    {
+        public Guid Id { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+    }
+} 

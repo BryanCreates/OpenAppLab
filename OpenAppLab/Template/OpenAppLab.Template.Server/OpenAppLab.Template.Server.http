@@ -1,0 +1,6 @@
+@OpenAppLab.Template.Server_HostAddress = http://localhost:5008
+
+GET {{OpenAppLab.Template.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>180b299b-fa2a-4160-bb4e-4d314bc48db7</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>..\..\..</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\OpenAppLab.Core.Server\OpenAppLab.Core.Server.csproj" />
+    <ProjectReference Include="..\..\Mod\Posts\OpenAppLab.Mod.Posts.Server\OpenAppLab.Mod.Posts.Server.csproj" />
+  </ItemGroup>
+
+</Project>

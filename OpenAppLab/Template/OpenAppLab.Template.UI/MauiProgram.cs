@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using OpenAppLab.Core.UI.Shared;
+using OpenAppLab.Core.UI.Shared.GraphQL;
 using OpenAppLab.Template.UI.Services;
 using OpenAppLab.Template.UI.Shared.Services;
 
@@ -25,6 +27,15 @@ namespace OpenAppLab.Template.UI
             builder.Services.AddBlazorWebViewDeveloperTools();
             builder.Logging.AddDebug();
 #endif
+
+            string BaseAddress =
+                DeviceInfo.Platform == DevicePlatform.Android ? "https://10.0.2.2:7128/graphql" : "https://localhost:7128/graphql";
+            builder.Services.AddHttpClient<GraphQLHttpClientService>(client =>
+            {
+                client.BaseAddress = new Uri(BaseAddress);
+            });
+
+            //ModuleRegistry.AutoRegister();
 
             return builder.Build();
         }

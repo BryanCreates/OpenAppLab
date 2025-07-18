@@ -2,17 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
+    <RazorLangVersion>9.0</RazorLangVersion>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
 
   <ItemGroup>
     <SupportedPlatform Include="browser" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Core\OpenAppLab.Core.UI.Shared\OpenAppLab.Core.UI.Shared.csproj" />
-    <ProjectReference Include="..\..\Mod\Posts\OpenAppLab.Mod.Posts.UI.Shared\OpenAppLab.Mod.Posts.UI.Shared.csproj" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>    
+    <ProjectReference Include="..\..\..\Core\OpenAppLab.Core.UI.Shared\OpenAppLab.Core.UI.Shared.csproj" />
   </ItemGroup>
 
 </Project>

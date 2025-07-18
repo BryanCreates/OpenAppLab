@@ -1,6 +1,22 @@
-﻿<Router AppAssembly="typeof(Layout.MainLayout).Assembly">
+﻿@using System.Reflection
+@using OpenAppLab.Core.UI.Shared
+
+<Router AppAssembly="typeof(Layout.MainLayout).Assembly"
+        AdditionalAssemblies="additionalAssemblies">
     <Found Context="routeData">
         <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)" />
         <FocusOnNavigate RouteData="routeData" Selector="h1" />
     </Found>
 </Router>
+
+@code {
+
+    public static Assembly[] additionalAssemblies { get; set; }
+
+    protected override void OnInitialized()
+    {
+        additionalAssemblies = ModuleRegistry.KnownAssemblies;
+
+        base.OnInitialized();
+    }
+}
