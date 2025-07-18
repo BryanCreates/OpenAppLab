@@ -1,6 +1,6 @@
 ﻿@page "/posts"
 @using OpenAppLab.Core.UI.Shared.GraphQL
-@* @inject GraphQLHttpClientService GraphQLService *@
+@inject GraphQLHttpClientService GraphQLService
 
 <h3>Posts</h3>
 
@@ -30,6 +30,14 @@ else
 
     protected override async Task OnInitializedAsync()
     {
+        var values = await GraphQLService.ExecuteQueryAsync<Post>(@"
+    query {
+        posts {
+            id
+            title
+            content
+        }
+    }");
         // Example: get page 1 of all posts where postType == "Car"
         // posts = await new GraphQLQueryable<Post>()
         //     //.Where(x => x.PostType == "Car")

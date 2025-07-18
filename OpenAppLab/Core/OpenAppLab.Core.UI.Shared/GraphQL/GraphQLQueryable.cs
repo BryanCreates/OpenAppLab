@@ -21,11 +21,11 @@ public class GraphQLQueryable<T>
         return this;
     }
 
-    public async Task<List<T>> ToListAsync()
-    {
-        var gql = GraphQLQueryBuilder.Build<T>(_filters, _page, _pageSize);
-        return await GraphQLHttpClientService.ExecuteQueryAsync<T>(gql);
-    }
+    //public async Task<List<T>> ToListAsync()
+    //{
+    //    var gql = GraphQLQueryBuilder.Build<T>(_filters, _page, _pageSize);
+    //    return await GraphQLHttpClientService.ExecuteQueryAsync<T>(gql);
+    //}
 }
 
 public static class GraphQLQueryBuilder

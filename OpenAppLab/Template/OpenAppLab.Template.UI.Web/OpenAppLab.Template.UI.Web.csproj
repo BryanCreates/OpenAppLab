@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Core\OpenAppLab.Core.UI.Shared\OpenAppLab.Core.UI.Shared.csproj" />
+    <ProjectReference Include="..\..\Mod\Posts\OpenAppLab.Mod.Posts.UI.Shared\OpenAppLab.Mod.Posts.UI.Shared.csproj" />
     <ProjectReference Include="..\OpenAppLab.Template.UI.Web.Client\OpenAppLab.Template.UI.Web.Client.csproj" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.0" />
   </ItemGroup>
