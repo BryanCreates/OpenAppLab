@@ -35,7 +35,7 @@ public class GraphQLHttpClientService //: IGraphQLHttpClientService
 
         var json = await response.Content.ReadAsStringAsync();
         var parsed = JsonDocument.Parse(json);
-        var data = parsed.RootElement.GetProperty("data").GetProperty("posts").GetProperty("items");
+        var data = parsed.RootElement.GetProperty("data").GetProperty("posts");
 
         return JsonSerializer.Deserialize<List<T>>(data);
     }

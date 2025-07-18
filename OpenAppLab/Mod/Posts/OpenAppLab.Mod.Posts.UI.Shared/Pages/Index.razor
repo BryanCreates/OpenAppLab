@@ -30,7 +30,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        var values = await GraphQLService.ExecuteQueryAsync<Post>(@"
+        posts = await GraphQLService.ExecuteQueryAsync<Post>(@"
     query {
         posts {
             id
