@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using OpenAppLab.Core.UI.Shared;
 using OpenAppLab.Core.UI.Shared.GraphQL;
+using OpenAppLab.Template.UI.Shared;
 using OpenAppLab.Template.UI.Shared.Services;
 using OpenAppLab.Template.UI.Web.Client.Services;
 

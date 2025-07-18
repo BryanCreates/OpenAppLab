@@ -15,8 +15,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\OpenAppLab\Core\OpenAppLab.Core.UI.Shared\OpenAppLab.Core.UI.Shared.csproj" />
+  <ItemGroup>    
+    <ProjectReference Include="..\..\..\Core\OpenAppLab.Core.UI.Shared\OpenAppLab.Core.UI.Shared.csproj" />
   </ItemGroup>
 
 </Project>

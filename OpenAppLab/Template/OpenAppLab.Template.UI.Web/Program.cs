@@ -1,10 +1,10 @@
-using OpenAppLab.Core.UI.Shared;
 using OpenAppLab.Core.UI.Shared.GraphQL;
 using OpenAppLab.Template.UI.Shared.Services;
 using OpenAppLab.Template.UI.Web.Components;
 using OpenAppLab.Template.UI.Web.Services;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.AspNetCore.Components.Web;
+using OpenAppLab.Template.UI.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,7 +48,7 @@ var assemblies = new[]
     typeof(OpenAppLab.Template.UI.Web.Client._Imports).Assembly
 };
 
-var additionalAssemblies = ModuleRegistry.GetAssemblies();
+var additionalAssemblies = ModuleRegistry.KnownAssemblies;
 
 var allAssemblies = assemblies.Concat(additionalAssemblies).ToArray();
 

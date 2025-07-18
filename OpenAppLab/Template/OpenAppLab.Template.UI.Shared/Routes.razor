@@ -16,7 +16,7 @@
     protected override void OnInitialized()
     {
         //ModuleRegistry.AutoRegister();
-        additionalAssemblies = ModuleRegistry.GetAssemblies();
+        additionalAssemblies = ModuleRegistry.KnownAssemblies;
 
         base.OnInitialized();
     }
