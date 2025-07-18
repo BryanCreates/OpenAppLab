@@ -31,18 +31,13 @@ else
     protected override async Task OnInitializedAsync()
     {
         posts = await GraphQLService.ExecuteQueryAsync<Post>(@"
-    query {
-        posts {
-            id
-            title
-            content
-        }
-    }");
-        // Example: get page 1 of all posts where postType == "Car"
-        // posts = await new GraphQLQueryable<Post>()
-        //     //.Where(x => x.PostType == "Car")
-        //     .Page(1, 10)
-        //     .ToListAsync();
+        query {
+            posts {
+                id
+                title
+                content
+            }
+        }");
         await base.OnInitializedAsync();
     }
 
