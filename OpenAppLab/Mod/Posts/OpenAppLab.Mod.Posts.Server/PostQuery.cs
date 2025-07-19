@@ -1,4 +1,5 @@
-﻿using HotChocolate.Types;
+﻿using HotChocolate.Data;
+using HotChocolate.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,9 @@ namespace OpenAppLab.Mod.Posts.Server;
 [ExtendObjectType("Query")]
 public class PostQuery
 {
+    [UsePaging]
+    [UseProjection]
+    [UseFiltering]
     public IQueryable<Post> GetPosts()
         => new List<Post>
         {
@@ -25,7 +29,4 @@ public class PostQuery
                 Content = "Let's learn more about GraphQL."
             }
         }.AsQueryable();
-
-    //public IQueryable<Post> GetPosts([Service] ApplicationDbContext db)
-    //    => db.Set<Post>().AsQueryable();
 }
