@@ -30,14 +30,27 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        posts = await GraphQLService.ExecuteQueryAsync<Post>(@"
-        query {
-            posts {
-                id
-                title
-                content
-            }
-        }");
+        var query = new GraphQLQueryable<Post>("posts")
+                    .Where(p => p.Title == "Hello World" || p.Title == "GraphQL is Awesome")
+                    .Page(1, "MA==")
+                    .Select(x => new { x.Id, x.Title })
+                    .BuildQuery();
+
+
+        // Optional: log query
+        Console.WriteLine(query);
+
+        var posts = await GraphQLService.ExecuteQueryAsync<Post>(query);
+
+        // Optional: log query
+        Console.WriteLine(query);
+
+        // posts = await new GraphQLQueryable<Post>(GraphQLService)
+        //     .Where(p => p.Title == "Hello World")
+        //     .Page(1, 5)
+        //     .ToListAsync();
+
+        
         await base.OnInitializedAsync();
     }
 
