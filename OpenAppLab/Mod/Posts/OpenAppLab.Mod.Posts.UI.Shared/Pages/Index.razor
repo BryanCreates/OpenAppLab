@@ -33,10 +33,11 @@ else
     protected override async Task OnInitializedAsync()
     {
         var query = new GraphQLQueryable<Post>("posts")
-                    .Where(p => p.Title == "Hello World" || p.Title == "GraphQL is Awesome")
-                    .Page(1, "MA==")
-                    .Select(x => new { x.Id, x.Title, x.Content})
-                    .BuildQuery();
+                            .Where(p => p.Title == "Bingo" || p.Title == "Jenga")
+                            .WhereOnCollection<PostMeta>("meta", m => m.Type == "MinPlayers")
+                            .Page(5, "MA==")
+                            .Select(x => new { x.Id, x.Title, x.Content })
+                            .BuildQuery();
 
         // Optional: log query
         Console.WriteLine(query);

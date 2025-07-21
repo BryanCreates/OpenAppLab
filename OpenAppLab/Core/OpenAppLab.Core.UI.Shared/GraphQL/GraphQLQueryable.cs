@@ -7,6 +7,7 @@ public class GraphQLQueryable<T>
 {
     private readonly string _queryName;
     private readonly List<Expression<Func<T, bool>>> _filters = new();
+    private readonly Dictionary<string, LambdaExpression> _collectionFilters = new();
     private int? _first;
     private string _after = "";
     private Expression<Func<T, object>>? _selector;
@@ -21,6 +22,14 @@ public class GraphQLQueryable<T>
         _filters.Add(filter);
         return this;
     }
+
+
+    public GraphQLQueryable<T> WhereOnCollection<TSub>(string property, Expression<Func<TSub, bool>> filter)
+    {
+        _collectionFilters[property] = filter;
+        return this;
+    }
+
 
     public GraphQLQueryable<T> Page(int first, string after)
     {
@@ -44,11 +53,12 @@ public class GraphQLQueryable<T>
 public static class GraphQLQueryBuilder
 {
     public static string Build<T>(
-        string queryName,
-        List<Expression<Func<T, bool>>> filters,
-        int? first,
-        string? after,
-        Expression<Func<T, object>>? selector)
+    string queryName,
+    List<Expression<Func<T, bool>>> filters,
+    int? first,
+    string? after,
+    Expression<Func<T, object>>? selector,
+    Dictionary<string, LambdaExpression>? collectionFilters = null)
     {
         var sb = new StringBuilder();
         sb.AppendLine("query {");
@@ -58,7 +68,7 @@ public static class GraphQLQueryBuilder
         if (first.HasValue) args.Add($"first: {first.Value}");
         if (!string.IsNullOrEmpty(after)) args.Add($"after: \"{after}\"");
 
-        var whereClause = BuildWhere(filters.Cast<LambdaExpression>().ToList());
+        var whereClause = BuildWhere(filters.Cast<LambdaExpression>().ToList(), collectionFilters);
         if (!string.IsNullOrEmpty(whereClause)) args.Add($"where: {whereClause}");
 
         if (args.Any())
@@ -75,6 +85,10 @@ public static class GraphQLQueryBuilder
         foreach (var field in fields)
             sb.AppendLine($"        {field}");
 
+        // Optional: Always include meta if collection filtering was requested
+        if (collectionFilters?.ContainsKey("meta") == true)
+            sb.AppendLine("        meta (where:{type: {eq: \"MinPlayers\"}}) { type value }");
+
         sb.AppendLine("      }");
         sb.AppendLine("      cursor");
         sb.AppendLine("    }");
@@ -90,19 +104,28 @@ public static class GraphQLQueryBuilder
         return sb.ToString();
     }
 
-    private static string BuildWhere(List<LambdaExpression> filters)
+
+    private static string BuildWhere(List<LambdaExpression> filters, Dictionary<string, LambdaExpression>? subFilters)
     {
-        if (!filters.Any()) return "";
+        var combined = filters.Select(f => ParseExpression(f.Body)).ToList();
 
-        var combined = filters
-            .Select(f => ParseExpression(f.Body))
-            .Where(s => !string.IsNullOrWhiteSpace(s))
-            .ToList();
+        if (subFilters != null)
+        {
+            foreach (var kv in subFilters)
+            {
+                var subCondition = ParseExpression(kv.Value.Body);
+                combined.Add($"{kv.Key.ToCamelCase()}: {{ some: {{ {subCondition} }} }}");
+            }
+        }
 
-        return combined.Count == 1
-            ? $"{{ {combined[0]} }}"
-            : $"{{ or: [ {string.Join(", ", combined.Select(c => $"{{ {c} }}"))} ] }}";
+        return combined.Count switch
+        {
+            0 => "",
+            1 => $"{{ {combined[0]} }}",
+            _ => $"{{ and: [ {string.Join(", ", combined.Select(c => $"{{ {c} }}"))} ] }}"
+        };
     }
+
 
     private static string ParseExpression(Expression expr)
     {
