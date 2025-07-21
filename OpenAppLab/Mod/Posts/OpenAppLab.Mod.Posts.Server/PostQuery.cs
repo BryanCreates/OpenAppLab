@@ -1,10 +1,5 @@
 ﻿using HotChocolate.Data;
 using HotChocolate.Types;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OpenAppLab.Mod.Posts.Server;
 [ExtendObjectType("Query")]
@@ -19,14 +14,69 @@ public class PostQuery
             new Post
             {
                 Id = Guid.NewGuid(),
-                Title = "Hello World",
-                Content = "This is my first post!"
+                Title = "Bingo",
+                Content = "For old people!",
+                Type = "game",
+                Meta = new()
+                {
+                    new()
+                    {
+                        Id = Guid.NewGuid(),
+                        Type = "MaxPlayers",
+                        Value = "10"
+                    },
+                    new()
+                    {
+                        Id = Guid.NewGuid(),
+                        Type = "MinPlayers",
+                        Value = "2"
+                    }
+                }
             },
             new Post
             {
                 Id = Guid.NewGuid(),
-                Title = "GraphQL is Awesome",
-                Content = "Let's learn more about GraphQL."
+                Title = "Jenga",
+                Content = "Don't let it drop.",
+                Type = "game",
+                Meta = new()
+                {
+                    new()
+                    {
+                        Id = Guid.NewGuid(),
+                        Type = "MaxPlayers",
+                        Value = "4"
+                    },
+                    new()
+                    {
+                        Id = Guid.NewGuid(),
+                        Type = "MinPlayers",
+                        Value = "2"
+                    }
+                }
+            }
+            ,
+            new Post
+            {
+                Id = Guid.NewGuid(),
+                Title = "No Cheating",
+                Content = "don't cheat.",
+                Type = "game",
+                Meta = new()
+                {
+                    new()
+                    {
+                        Id = Guid.NewGuid(),
+                        Type = "MaxPlayers",
+                        Value = "4"
+                    },
+                    new()
+                    {
+                        Id = Guid.NewGuid(),
+                        Type = "rule",
+                        Value = "No Cheating"
+                    }
+                }
             }
         }.AsQueryable();
 }
