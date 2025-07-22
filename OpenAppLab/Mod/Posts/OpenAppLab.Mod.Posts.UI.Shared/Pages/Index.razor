@@ -33,11 +33,12 @@ else
     protected override async Task OnInitializedAsync()
     {
         var query = new GraphQLQueryable<Post>("posts")
-                            .Where(p => p.Title == "Bingo" || p.Title == "Jenga")
-                            .WhereOnCollection<PostMeta>("meta", m => m.Type == "MinPlayers")
-                            .Page(5, "MA==")
-                            .Select(x => new { x.Id, x.Title, x.Content })
-                            .BuildQuery();
+    .Where(p => p.Title == "Bingo" || p.Title == "Jenga")
+    .WhereOnCollection<PostMeta>("meta", m => m.Type == "MinPlayers")
+    .SelectWhere<PostMeta>("meta", m => m.Type == "MinPlayers")
+    .Select<PostContract>()
+    .Page(5, "MA==")
+    .BuildQuery();
 
         // Optional: log query
         Console.WriteLine(query);
@@ -73,6 +74,27 @@ else
         [JsonPropertyName("type")]
         public string Type { get; set; }
 
+        [JsonPropertyName("value")]
+        public string Value { get; set; }
+    }
+
+    public class PostContract
+    {
+        [JsonPropertyName("id")]
+        public Guid Id { get; set; }
+
+        [JsonPropertyName("title")]
+        public string Title { get; set; }
+
+        [JsonPropertyName("content")]
+        public string Content { get; set; }
+
+        [JsonPropertyName("meta")]
+        public List<PostMetaContract> Meta { get; set; }
+    }
+
+    public class PostMetaContract
+    {
         [JsonPropertyName("value")]
         public string Value { get; set; }
     }
