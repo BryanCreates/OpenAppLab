@@ -1,5 +1,7 @@
 ﻿@page "/posts"
 @using OpenAppLab.Core.UI.Shared.GraphQL
+@using OpenAppLab.Core.UI.Shared.GraphQL.Models
+@using System.Text.Json.Serialization
 @inject GraphQLHttpClientService GraphQLService
 
 <h3>Posts</h3>
@@ -8,56 +10,92 @@
 {
     <p><em>Loading...</em></p>
 }
-else if (!posts.Any())
+else if (!posts.Edges.Any())
 {
     <p>No posts found.</p>
 }
 else
 {
     <ul>
-        @foreach (var post in posts)
+        @foreach (var post in posts.Edges)
         {
             <li>
-                <strong>@post.Title</strong>
-                <pre>@post.Content</pre>
+                <strong>@post.Node.Title</strong>
+                <pre>@post.Node.Content</pre>
             </li>
         }
     </ul>
 }
 
 @code {
-    private List<Post>? posts;
+    private GraphQLPaginatedResponse<Post>? posts;
 
     protected override async Task OnInitializedAsync()
     {
         var query = new GraphQLQueryable<Post>("posts")
-                    .Where(p => p.Title == "Hello World" || p.Title == "GraphQL is Awesome")
-                    .Page(1, "MA==")
-                    .Select(x => new { x.Id, x.Title })
-                    .BuildQuery();
-
-
-        // Optional: log query
-        Console.WriteLine(query);
-
-        var posts = await GraphQLService.ExecuteQueryAsync<Post>(query);
+    .Where(p => p.Title == "Bingo" || p.Title == "Jenga")
+    .WhereOnCollection<PostMeta>("meta", m => m.Type == "MinPlayers")
+    .SelectWhere<PostMeta>("meta", m => m.Type == "MinPlayers")
+    .Select<PostContract>()
+    .Page(5, "MA==")
+    .BuildQuery();
 
         // Optional: log query
         Console.WriteLine(query);
 
-        // posts = await new GraphQLQueryable<Post>(GraphQLService)
-        //     .Where(p => p.Title == "Hello World")
-        //     .Page(1, 5)
-        //     .ToListAsync();
+        posts = await GraphQLService.ExecuteQueryAsync<Post>(query, "posts");
 
-        
         await base.OnInitializedAsync();
     }
 
     public class Post
     {
+        [JsonPropertyName("id")]
         public Guid Id { get; set; }
+
+        [JsonPropertyName("title")]
         public string Title { get; set; }
+
+        [JsonPropertyName("content")]
         public string Content { get; set; }
+
+        [JsonPropertyName("type")]
+        public string Type { get; set; }
+
+        [JsonPropertyName("meta")]
+        public List<PostMeta> Meta { get; set; }
+    }
+
+    public class PostMeta
+    {
+        [JsonPropertyName("id")]
+        public Guid Id { get; set; }
+
+        [JsonPropertyName("type")]
+        public string Type { get; set; }
+
+        [JsonPropertyName("value")]
+        public string Value { get; set; }
+    }
+
+    public class PostContract
+    {
+        [JsonPropertyName("id")]
+        public Guid Id { get; set; }
+
+        [JsonPropertyName("title")]
+        public string Title { get; set; }
+
+        [JsonPropertyName("content")]
+        public string Content { get; set; }
+
+        [JsonPropertyName("meta")]
+        public List<PostMetaContract> Meta { get; set; }
+    }
+
+    public class PostMetaContract
+    {
+        [JsonPropertyName("value")]
+        public string Value { get; set; }
     }
 } 
